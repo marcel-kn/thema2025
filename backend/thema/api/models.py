@@ -24,14 +24,13 @@ class Season(models.Model):
 
 
 class Booking(models.Model):
-    date = models.DateField()
-    time = models.TimeField()
-    venue = models.ForeignKey(Venue, on_delete=models.CASCADE)
+    # date = models.DateField()
+    # time = models.TimeField()
+    # venue = models.ForeignKey(Venue, on_delete=models.CASCADE)
     season = models.ForeignKey(Season, on_delete=models.CASCADE)
     production = models.ForeignKey('Production', on_delete=models.CASCADE)
     cost_travel = models.IntegerField(null=True)  # ? (cost of travel)
     cost_transport = models.IntegerField(null=True)  # ? (cost of transport)
-    seats_booked = models.IntegerField(null=True)  # ?
 
 
 class ShowDate(models.Model):
@@ -41,6 +40,7 @@ class ShowDate(models.Model):
     booking = models.ForeignKey(Booking, on_delete=models.CASCADE)
     venue = models.ForeignKey(Venue, on_delete=models.CASCADE)
     season = models.ForeignKey(Season, on_delete=models.CASCADE)
+    seats_booked = models.IntegerField(null=True)  # ?
 
 
 class Ensemble(models.Model):

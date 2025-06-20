@@ -80,7 +80,7 @@ class BookingViewSet(viewsets.ModelViewSet):
     """
     API endpoint that allows bookings to be viewed or edited.
     """
-    queryset = Booking.objects.all().order_by('date')
+    queryset = Booking.objects.all()
     serializer_class = BookingSerializer
     permission_classes = [permissions.AllowAny]
 

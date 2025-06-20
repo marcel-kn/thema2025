@@ -1,0 +1,11 @@
+.menu {
+    display: flex
+}
+
+.menuBtn {
+    padding: 0.5em;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+}
