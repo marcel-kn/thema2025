@@ -40,7 +40,7 @@ class ShowDate(models.Model):
     booking = models.ForeignKey(Booking, on_delete=models.CASCADE)
     venue = models.ForeignKey(Venue, on_delete=models.CASCADE)
     season = models.ForeignKey(Season, on_delete=models.CASCADE)
-    seats_booked = models.IntegerField(null=True)  # ?
+    # seats_booked = models.IntegerField(null=True)  # ?
 
 
 class Ensemble(models.Model):

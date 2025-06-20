@@ -26,13 +26,13 @@ type ShowDate = {
     booking: number,
     venue: number,
     season: number,
-    seats_booked: number,
 }
 
 function Content({ bookingId }: ContentProps): React.ReactElement {
     
     const [booking, setBooking] = useState<Booking>();
     const [production, setProduction] = useState<Production>();
+    const [showDates, setShowDates] = useState<ShowDate[]>();
 
     useEffect(() => {
         async function fetchData() {
@@ -54,8 +54,10 @@ function Content({ bookingId }: ContentProps): React.ReactElement {
             const productionData: Production = await productionResponse.json();
             setProduction(productionData);
             // Get all show dates belonging to bookingId
-
-
+            const showDatesResponse = await fetch("http://127.0.0.1:8000/showdates/");
+            const showDatesData: ShowDate[] = await showDatesResponse.json();
+            const showDatesOfBooking: ShowDate[] = showDatesData.filter((sd) => (sd.booking === bookingData.production))
+            setShowDates(showDatesOfBooking);
         }
 
         fetchData();
@@ -64,13 +66,14 @@ function Content({ bookingId }: ContentProps): React.ReactElement {
     return (
         <div>
             <h1>Booking</h1>
-            <p>Produktion:</p>
+            <p>Produktion</p>
             <p>{production?.name}</p>
 
             <pre>{JSON.stringify(booking, null, 2)}</pre>
             <pre>{JSON.stringify(production, null, 2)}</pre>
+            <p>Spieltermine</p>
+            {showDates?.map((sd) => (<p>{JSON.stringify(sd, null, 2)}</p>))}
         </div>
-        
     )
 }
 

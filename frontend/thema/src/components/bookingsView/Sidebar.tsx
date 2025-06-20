@@ -1,40 +1,43 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 type Production = { id: number; name: string };
 
 type SidebarProps = {
+    seasonId: number,
     setBookingId: React.Dispatch<React.SetStateAction<number>>;
 }
 
-function Sidebar({setBookingId}: SidebarProps): React.ReactElement {
+function Sidebar({seasonId, setBookingId}: SidebarProps): React.ReactElement {
   const [bookings, setBookings] = useState<Production[]>([]); 
   // [0] current state value [1] state updating function
 
-  async function setBookingsHandler() {
+  useEffect(() => {
+    async function fetchData() {
+      // 1. Get all bookings
+      const bookingsResponse = await fetch("http://127.0.0.1:8000/bookings/", {
+        method: "GET",
+        headers: {"Content-Type": "application/json"}
+      });
+      const bookingsData: { production: number }[] = await bookingsResponse.json();
+      const productionIds: number[] = bookingsData.map((item) => item.production);
+      
+      // 2. Get all productions
+      const productionsResponse = await fetch("http://127.0.0.1:8000/productions/", {
+        method: "GET",
+        headers: {"Content-Type": "application/json"}
+      });
+      const allProductionsData: { id: number, name: string }[] = await productionsResponse.json();
 
-    // 1. Get all bookings
-    const bookingsResponse = await fetch("http://127.0.0.1:8000/bookings/", {
-      method: "GET",
-      headers: {"Content-Type": "application/json"}
-    });
-    const bookingsData: { production: number }[] = await bookingsResponse.json();
-    const productionIds: number[] = bookingsData.map((item) => item.production);
-    
-    // 2. Get all productions
-    const productionsResponse = await fetch("http://127.0.0.1:8000/productions/", {
-      method: "GET",
-      headers: {"Content-Type": "application/json"}
-    });
-    const allProductionsData: { id: number, name: string }[] = await productionsResponse.json();
+      // 3. Filter out production names and ids by production id
 
-    // 3. Filter out production names and ids by production id
-
-    const productionsOfBookings: Production[] = 
-      allProductionsData.filter((prod) => productionIds.includes(prod.id));
-    
-    setBookings(productionsOfBookings);
-  }
+      const productionsOfBookings: Production[] = 
+        allProductionsData.filter((prod) => productionIds.includes(prod.id));
+      
+      setBookings(productionsOfBookings);
+    }
+    fetchData();
+  }, [seasonId]);
 
   // When a booking is clicked
   const onBookingClicked = (id: number) => {
@@ -47,9 +50,6 @@ function Sidebar({setBookingId}: SidebarProps): React.ReactElement {
 
   return (
       <aside style={{ width: "200px", backgroundColor: "#eee", padding: "1rem" }}>
-          <button onClick={setBookingsHandler}>
-          Reload Bookings
-          </button>
           <ul>
             {bookings.map((booking) => (
               <li
