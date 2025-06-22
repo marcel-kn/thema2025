@@ -1,6 +1,10 @@
 from django.contrib.auth.models import Group, User
 from django.http import HttpResponse
 from rest_framework import permissions, viewsets
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import status
+from django.shortcuts import get_object_or_404
 
 from thema.api.models import Production, Theatre, Venue, Season, Booking, ShowDate, Ensemble, \
                              Artist, ToDo
@@ -119,6 +123,21 @@ class ToDoViewSet(viewsets.ModelViewSet):
     queryset = ToDo.objects.all().order_by('due_date')
     serializer_class = ToDoSerializer
     permission_classes = [permissions.AllowAny]
+
+
+class BookingDetailsView(APIView):
+    def get(self, request, booking_id):
+        booking = get_object_or_404(Booking, pk=booking_id)
+        production = booking.production
+        showdates = ShowDate.objects.filter(booking=booking)
+        ensemble = production.ensemble
+
+        return Response({
+            "booking": BookingSerializer(booking).data,
+            "production": ProductionSerializer(production).data,
+            "showdates": ShowDateSerializer(showdates, many=True).data,
+            "ensemble": EnsembleSerializer(ensemble).data,
+        }, status=status.HTTP_200_OK)
 
 
 # We configure a URL we want to support and which functions should be triggered by them

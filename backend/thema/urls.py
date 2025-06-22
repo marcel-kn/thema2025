@@ -19,6 +19,7 @@ from django.urls import include, path
 from rest_framework import routers
 
 from thema.api import views
+from thema.api.views import BookingDetailsView
 
 router = routers.DefaultRouter()
 router.register(r'users', views.UserViewSet)
@@ -38,5 +39,6 @@ router.register(r'todos', views.ToDoViewSet)
 urlpatterns = [
     path('', include(router.urls)),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
-    path('api/', include('thema.api.urls'))
+    path('api/', include('thema.api.urls')),
+    path('bookingdetails/<int:booking_id>/', BookingDetailsView.as_view(), name='booking-details'),
 ]

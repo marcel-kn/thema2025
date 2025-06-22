@@ -47,6 +47,9 @@ class BookingSerializer(serializers.ModelSerializer):
 
 
 class ShowDateSerializer(serializers.ModelSerializer):
+    # also include venue name
+    venue_name = serializers.CharField(source="venue.name", read_only=True)
+
     class Meta:
         model = ShowDate
         fields = '__all__'

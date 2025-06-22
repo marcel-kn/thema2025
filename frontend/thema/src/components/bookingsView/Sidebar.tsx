@@ -50,6 +50,7 @@ function Sidebar({seasonId, setBookingId}: SidebarProps): React.ReactElement {
 
   return (
       <aside style={{ width: "200px", backgroundColor: "#eee", padding: "1rem" }}>
+          <h3>Bookings</h3>
           <ul>
             {bookings.map((booking) => (
               <li
@@ -62,7 +63,7 @@ function Sidebar({seasonId, setBookingId}: SidebarProps): React.ReactElement {
             ))}
           </ul>
           <button onClick={newBookingHandler}>
-          New Booking
+          Neues Booking
           </button>
       </aside>
   );

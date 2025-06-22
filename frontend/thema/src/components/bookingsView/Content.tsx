@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import './Content.css';
 
 type ContentProps = {
     bookingId: number;
@@ -25,39 +26,43 @@ type ShowDate = {
     time: string,
     booking: number,
     venue: number,
+    venue_name: string,
     season: number,
+}
+
+type Ensemble = {
+    name: string,
+    contact_person: string,
+    email: string,
+    phone: string,
+    website: string,
+}
+
+type BookingDetails = {
+    booking: Booking,
+    production: Production,
+    showdates: ShowDate[],
+    ensemble: Ensemble,
 }
 
 function Content({ bookingId }: ContentProps): React.ReactElement {
     
-    const [booking, setBooking] = useState<Booking>();
-    const [production, setProduction] = useState<Production>();
-    const [showDates, setShowDates] = useState<ShowDate[]>();
+    const [bookingDetail, setBookingDetail] = useState<BookingDetails>();
 
     useEffect(() => {
         async function fetchData() {
             if (!bookingId) return;
-            // Get Booking of bookingId
-            const bookingResponse = await fetch("http://127.0.0.1:8000/bookings/" + bookingId + "/", {
+
+            // TODO: make this new with 
+            // /bookingdetails/{id}/
+
+            const bookingDetailsResponse = await fetch("http://127.0.0.1:8000/bookingdetails/" + bookingId + "/", {
                 method: "GET",
                 headers: {"Content-Type": "application/json"}
             });
 
-            const bookingData: Booking = await bookingResponse.json();
-            setBooking(bookingData);
-
-            // Get Production of Booking
-            const productionResponse = await fetch("http://127.0.0.1:8000/productions/" + bookingData.production + "/", {
-                method: "GET",
-                headers: {"Content-Type": "application/json"}
-            });
-            const productionData: Production = await productionResponse.json();
-            setProduction(productionData);
-            // Get all show dates belonging to bookingId
-            const showDatesResponse = await fetch("http://127.0.0.1:8000/showdates/");
-            const showDatesData: ShowDate[] = await showDatesResponse.json();
-            const showDatesOfBooking: ShowDate[] = showDatesData.filter((sd) => (sd.booking === bookingData.production))
-            setShowDates(showDatesOfBooking);
+            const bookingdetailsData = await bookingDetailsResponse.json();
+            setBookingDetail(bookingdetailsData);
         }
 
         fetchData();
@@ -65,14 +70,20 @@ function Content({ bookingId }: ContentProps): React.ReactElement {
     
     return (
         <div>
-            <h1>Booking</h1>
-            <p>Produktion</p>
-            <p>{production?.name}</p>
-
-            <pre>{JSON.stringify(booking, null, 2)}</pre>
-            <pre>{JSON.stringify(production, null, 2)}</pre>
-            <p>Spieltermine</p>
-            {showDates?.map((sd) => (<p>{JSON.stringify(sd, null, 2)}</p>))}
+            <h2>{bookingDetail?.production.name}</h2>
+            <h4>{bookingDetail?.ensemble.name}</h4>
+            {/* <pre>{JSON.stringify(bookingDetail, null, 2)}</pre> */}
+            <p>Dauer: {bookingDetail?.production.length} Minuten</p>
+            <p>Reisekosten: {bookingDetail?.booking.cost_travel} €</p>
+            <p>Transportkosten: {bookingDetail?.booking.cost_transport} €</p>
+            <h3>Spieltermine <button>+</button></h3>
+            {bookingDetail?.showdates.map((sd) => (
+                <div className="showdate">
+                    <p>{new Date(sd.date).toLocaleDateString("de-DE")}</p>
+                    <p>{sd.time}  {sd.venue_name}</p>
+                </div>
+            ))}
+            <h3>TODOs <button>+</button></h3>
         </div>
     )
 }
