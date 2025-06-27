@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="12mm"
+   height="6mm"
+   viewBox="0 0 12 6"
+   version="1.1"
+   id="svg3531"
+   inkscape:version="1.1.2 (0a00cf5339, 2022-02-04)"
+   sodipodi:docname="thema_logo.svg"
+   inkscape:export-filename="/home/marcel/Dev/Fitz/thema2025/frontend/thema/src/assets/thema_logo.png"
+   inkscape:export-xdpi="127"
+   inkscape:export-ydpi="127"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview3533"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="7.2407734"
+     inkscape:cx="49.994659"
+     inkscape:cy="-2.8311893"
+     inkscape:window-width="1920"
+     inkscape:window-height="1146"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs3528" />
+  <g
+     inkscape:label="Ebene 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <g
+       aria-label="Th."
+       id="text4452"
+       style="font-size:7.0022px;line-height:1.25;font-family:'Fira Sans';-inkscape-font-specification:'Fira Sans';text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;stroke-width:0.264583">
+      <path
+         d="m 4.4739088,0.93603661 c 0,-0.1960616 -0.021007,-0.31509901 -0.3080968,-0.31509901 H 0.76274277 c -0.245077,0 -0.315099,0.0630198 -0.315099,0.31509901 0,0.27308579 0.0840264,0.31509899 0.3291034,0.31509899 L 2.0371432,1.230129 v 3.8932233 c 0,0.245077 0.06302,0.315099 0.315099,0.315099 h 0.2310726 c 0.245077,0 0.3080968,-0.070022 0.3080968,-0.3080968 V 1.230129 l 1.260396,0.021007 c 0.245077,0 0.3221012,-0.049015 0.3221012,-0.31509939 z"
+         style="font-family:'Latin Modern Sans Demi Cond';-inkscape-font-specification:'Latin Modern Sans Demi Cond';fill:#2243bb"
+         id="path10559" />
+      <path
+         d="M 7.715921,5.1303545 V 3.0436988 c 0,-0.560176 -0.175055,-0.980308 -0.8962816,-0.980308 -0.560176,0 -0.840264,0.4061276 -0.9593014,0.665209 h -0.007 V 0.88702121 C 5.8533358,0.669953 5.8113226,0.5789244 5.545239,0.5789244 H 5.4121972 c -0.245077,0 -0.3150991,0.0630198 -0.3150991,0.31509901 V 5.1233523 c 0,0.245077 0.06302,0.315099 0.3150991,0.315099 h 0.1540484 c 0.245077,0 0.3080968,-0.070022 0.3080968,-0.3080968 V 3.4568287 c 0,-0.6372003 0.3571122,-0.9452971 0.6862156,-0.9452971 0.2940924,0 0.3781188,0.1680528 0.3781188,0.560176 v 2.0586469 c 0,0.2170682 0.042013,0.3080968 0.3080968,0.3080968 h 0.1610506 c 0.245077,0 0.3080968,-0.070022 0.3080968,-0.3080968 z"
+         style="font-family:'Latin Modern Sans Demi Cond';-inkscape-font-specification:'Latin Modern Sans Demi Cond';fill:#2243bb"
+         id="path10561" />
+      <path
+         d="M 9.3964478,5.2563941 V 4.8782753 c 0,-0.1820572 -0.007,-0.1820572 -0.175055,-0.1820572 H 8.8292696 c -0.1680528,0 -0.175055,0 -0.175055,0.1820572 v 0.3781188 c 0,0.175055 0.007,0.1820572 0.1820572,0.1820572 h 0.385121 c 0.1680528,0 0.175055,0 0.175055,-0.1820572 z"
+         style="font-family:'Latin Modern Sans Demi Cond';-inkscape-font-specification:'Latin Modern Sans Demi Cond';fill:#2243bb"
+         id="path10563" />
+    </g>
+  </g>
+</svg>

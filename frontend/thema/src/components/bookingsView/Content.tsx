@@ -1,49 +1,19 @@
+/**
+ * Content Component of the BookingsView
+ * 
+ * Displays Booking Details
+ */
+
 import React, { useState, useEffect } from "react";
 import './Content.css';
+
+import { BookingDetails } from "../../types";
 
 type ContentProps = {
     bookingId: number;
 }
 
-type Booking = {
-    season: string,
-    production: number,
-    cost_travel: number,
-    cost_transport: number
-}
 
-type Production = { 
-    id: number; 
-    name: string;
-    ensemble: number;
-    artist: number;
-    length: number;
-    honorar: number; // this got to go to booking
-};
-
-type ShowDate = {
-    date: string,
-    time: string,
-    booking: number,
-    venue: number,
-    venue_name: string,
-    season: number,
-}
-
-type Ensemble = {
-    name: string,
-    contact_person: string,
-    email: string,
-    phone: string,
-    website: string,
-}
-
-type BookingDetails = {
-    booking: Booking,
-    production: Production,
-    showdates: ShowDate[],
-    ensemble: Ensemble,
-}
 
 function Content({ bookingId }: ContentProps): React.ReactElement {
     

@@ -1,11 +1,11 @@
-import reactLogo from '../assets/react.svg'
+import themaLogo from '../assets/thema_logo.svg'
 import "./MainHeader.css"
 
 function MainHeader() {
   return (
     <header style={{ backgroundColor: "#CCC", color: "black", padding: "1rem"}}>
-      <a href="https://react.dev" target="_blank">
-        <img src={reactLogo} className="logo react" alt="React logo" />
+      <a href="https://" target="_blank">
+        <img src={themaLogo} className="logo thema" alt="Thema logo" />
       </a>
       <a>Spielzeit: </a>
         <button onClick={() => ("")}>

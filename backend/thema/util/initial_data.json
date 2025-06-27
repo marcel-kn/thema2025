@@ -1,0 +1,9 @@
+[
+  {"model": "thema.api.theatre", "pk": 1, "fields": {"name": "FIBS"}},
+  {"model": "thema.api.venue", "pk": 1, "fields": {"name": "Großer Saal", "seats": 200, "theatre": 1}},
+  {"model": "thema.api.venue", "pk": 2, "fields": {"name": "Studio", "seats": 50, "theatre": 1}},
+  {"model": "thema.api.theatre", "pk": 2, "fields": {"name": "Schanze"}},
+  {"model": "thema.api.venue", "pk": 3, "fields": {"name": "Saal 1", "seats": 500, "theatre": 2}},
+  {"model": "thema.api.venue", "pk": 4, "fields": {"name": "Saal 2", "seats": 100, "theatre": 2}}
+]
+

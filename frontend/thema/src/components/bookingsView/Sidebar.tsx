@@ -1,16 +1,17 @@
 import React from "react";
 import { useState, useEffect } from "react";
+import { Production } from "../../types";
 
-type Production = { id: number; name: string };
+//type Production = { id: number; name: string };
 
 type SidebarProps = {
     seasonId: number,
     setBookingId: React.Dispatch<React.SetStateAction<number>>;
+    setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-function Sidebar({seasonId, setBookingId}: SidebarProps): React.ReactElement {
+function Sidebar({seasonId, setBookingId, setShowModal}: SidebarProps): React.ReactElement {
   const [bookings, setBookings] = useState<Production[]>([]); 
-  // [0] current state value [1] state updating function
 
   useEffect(() => {
     async function fetchData() {
@@ -27,7 +28,7 @@ function Sidebar({seasonId, setBookingId}: SidebarProps): React.ReactElement {
         method: "GET",
         headers: {"Content-Type": "application/json"}
       });
-      const allProductionsData: { id: number, name: string }[] = await productionsResponse.json();
+      const allProductionsData: Production[] = await productionsResponse.json();
 
       // 3. Filter out production names and ids by production id
 
@@ -46,8 +47,6 @@ function Sidebar({seasonId, setBookingId}: SidebarProps): React.ReactElement {
     setBookingId(id);
   };
 
-  const newBookingHandler = () => {};
-
   return (
       <aside style={{ width: "200px", backgroundColor: "#eee", padding: "1rem" }}>
           <h3>Bookings</h3>
@@ -62,7 +61,7 @@ function Sidebar({seasonId, setBookingId}: SidebarProps): React.ReactElement {
               </li>
             ))}
           </ul>
-          <button onClick={newBookingHandler}>
+          <button onClick={() => setShowModal(true)}>
           Neues Booking
           </button>
       </aside>
