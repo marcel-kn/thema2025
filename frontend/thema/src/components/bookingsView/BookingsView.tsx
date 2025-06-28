@@ -79,7 +79,7 @@ function BookingsView(): React.ReactElement {
       setBookedProductions(productionsOfBookings);
     }
     fetchBookedProductions();
-  }, [allProductions, seasonId, reloadBookedProds]);
+  }, [allProductions, seasonId, reloadBookedProdsFlag]);
 
   const showCreateBookingModal = () => {
     return (

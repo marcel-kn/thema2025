@@ -20,6 +20,8 @@ export type ShowDate = {
     booking: number,
     venue: number,
     venue_name: string,
+    theatre: number,
+    theatre_name: string,
     season: number,
 }
 

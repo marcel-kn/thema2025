@@ -1,7 +1,15 @@
 .showdate {
-  background-color: lemonchiffon;
+  background-color: rgb(173, 197, 204);
+  max-width: 300px;
+  border-radius: 8px;
+  padding: 0.5em;
+  margin: 0.5em;
 }
 
 .showdate p {
   padding: 0.2em;
+}
+
+.showdate .date {
+  font-weight: bold;
 }
