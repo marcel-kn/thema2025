@@ -1,0 +1,42 @@
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal {
+  background: #fff;
+  padding: 2em;
+  border-radius: 8px;
+  min-width: 300px;
+  display: grid;
+  gap: 1em;
+  max-width: 400px;
+}
+
+.modal form {
+  display: grid;
+  gap: 1em;
+  grid-template-columns: 1fr 2fr;
+  align-items: center;
+}
+
+.modal label {
+  display: contents;
+  font-weight: bold;
+}
+
+.modal .button-row {
+  grid-column: 1 / -1;
+  display: flex;
+  gap: 1em;
+  justify-content: flex-end;
+  margin-top: 1em;
+}

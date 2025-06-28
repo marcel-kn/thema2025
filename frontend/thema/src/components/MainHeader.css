@@ -1,11 +1,38 @@
+.mainHeader {
+  display: grid;
+  align-items: center;
+  background-color: #ccc;
+  color: black;
+  padding: 1rem;
+}
+
+.headerRow {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+}
+
 .menu {
-    display: flex
+  display: flex;
+}
+
+.logo {
+  display: contents;
+}
+
+.season {
+  display: contents;
 }
 
 .menuBtn {
-    padding: 0.5em;
-    border: none;
-    border-radius: 8px;
-    font-weight: bold;
-    cursor: pointer;
+  grid-column: 0 / -1;
+  display: flex;
+  gap: 1em;
+  justify-content: flex-end;
+  margin-top: 0.2em;
+  padding: 0.5em;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
 }
