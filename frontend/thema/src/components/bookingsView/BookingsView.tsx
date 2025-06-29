@@ -62,6 +62,8 @@ function BookingsView(): React.ReactElement {
 
   // Fetch bookings (productions booked for currently selected season)
   useEffect(() => {
+    if (allProductions.length === 0) return;
+
     async function fetchBookedProductions() {
       // 1. Get bookings
       const bookingsResponse = await fetch("http://127.0.0.1:8000/bookings/", {
