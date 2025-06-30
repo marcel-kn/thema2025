@@ -2,7 +2,7 @@
 
 A theatre management software.
 
-![app screenshot](images/app_screenshot01.png)
+<img src="images/app_screenshot01.jpg" alt="app screenshot" width="600"/>
 
 ### Planned features:
 
