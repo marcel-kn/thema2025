@@ -74,7 +74,7 @@ function CreateBookingModal({
           }}
         >
           <label>Produktion:</label>
-          <select name="production" required>
+          <select name="production" data-cy="production-select" required>
             {productions.map((prod) => (
               <option key={prod.id} value={prod.id}>
                 {prod.name}

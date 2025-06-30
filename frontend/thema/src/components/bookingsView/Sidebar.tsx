@@ -1,8 +1,6 @@
 import React from "react";
 import { Booking } from "../../types";
 
-//type Production = { id: number; name: string };
-
 type SidebarProps = {
   seasonId: number;
   bookings: Booking[];
@@ -26,10 +24,11 @@ function Sidebar({
   return (
     <aside style={{ width: "200px", backgroundColor: "#eee", padding: "1rem" }}>
       <h3>Bookings</h3>
-      <ul>
+      <ul data-cy="booking-list">
         {bookings.map((booking) => (
           <li
             key={booking.id}
+            data-cy={booking.id}
             onClick={() => onBookingClicked(booking.id)}
             style={{ cursor: "pointer", padding: "5px" }}
           >
