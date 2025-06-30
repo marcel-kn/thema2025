@@ -1,3 +1,14 @@
+/**
+ * A modal for creating a booking
+ *
+ * Props:
+ * - setShowModal: Function to turn off visibility of the modal
+ * - seasonId: The current selected season
+ * - productions: a list of all productions
+ * - reloadBookedProds: a function to reload booked productions,
+ *   for triggering reloading
+ */
+
 import React from "react";
 import { Production } from "../../types";
 import "./CreateBookingModal.css";

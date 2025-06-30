@@ -20,9 +20,6 @@ function Content({ bookingId }: ContentProps): React.ReactElement {
     async function fetchData() {
       if (!bookingId) return;
 
-      // TODO: make this new with
-      // /bookingdetails/{id}/
-
       const bookingDetailsResponse = await fetch(
         "http://127.0.0.1:8000/bookingdetails/" + bookingId + "/",
         {
