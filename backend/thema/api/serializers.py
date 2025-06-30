@@ -41,6 +41,8 @@ class SeasonSerializer(serializers.ModelSerializer):
 
 
 class BookingSerializer(serializers.ModelSerializer):
+    production_name = serializers.CharField(source="production.name", read_only=True)
+
     class Meta:
         model = Booking
         fields = '__all__'

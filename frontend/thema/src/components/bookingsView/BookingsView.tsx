@@ -27,7 +27,7 @@ import { useState, useEffect } from "react";
 import Sidebar from "./Sidebar";
 import Content from "./Content";
 import CreateBookingModal from "./CreateBookingModal";
-import { Production } from "../../types";
+import { Production, Booking } from "../../types";
 
 function BookingsView(): React.ReactElement {
   const [bookingId, setBookingId] = useState(0);
@@ -38,12 +38,12 @@ function BookingsView(): React.ReactElement {
 
   const [allProductions, setAllProductions] = useState<Production[]>([]);
 
-  const [bookedProductions, setBookedProductions] = useState<Production[]>([]);
+  const [bookings, setBookings] = useState<Booking[]>([]);
 
   // Flag to trigger reloading bookings
-  const [reloadBookedProdsFlag, setReloadBookedProdsFlag] = useState(false);
+  const [reloadBookingsFlag, setReloadBookingsFlag] = useState(false);
 
-  const reloadBookedProds = () => setReloadBookedProdsFlag((flag) => !flag);
+  const reloadBookings = () => setReloadBookingsFlag((flag) => !flag);
 
   // Fetch all productions
   useEffect(() => {
@@ -64,24 +64,17 @@ function BookingsView(): React.ReactElement {
   useEffect(() => {
     if (allProductions.length === 0) return;
 
-    async function fetchBookedProductions() {
+    async function fetchBookings() {
       // 1. Get bookings
       const bookingsResponse = await fetch("http://127.0.0.1:8000/bookings/", {
         method: "GET",
         headers: { "Content-Type": "application/json" },
       });
-      const bookings: { production: number }[] = await bookingsResponse.json();
-      const productionIds: number[] = bookings.map((b) => b.production);
 
-      // 2. Get productions, belonging to the bookings
-      const productionsOfBookings: Production[] = allProductions.filter(
-        (prod) => productionIds.includes(prod.id)
-      );
-
-      setBookedProductions(productionsOfBookings);
+      setBookings(await bookingsResponse.json());
     }
-    fetchBookedProductions();
-  }, [allProductions, seasonId, reloadBookedProdsFlag]);
+    fetchBookings();
+  }, [allProductions, seasonId, reloadBookingsFlag]);
 
   const showCreateBookingModal = () => {
     return (
@@ -89,7 +82,7 @@ function BookingsView(): React.ReactElement {
         setShowModal={setShowModal}
         seasonId={seasonId}
         productions={allProductions}
-        reloadBookedProds={reloadBookedProds}
+        reloadBookedProds={reloadBookings}
       />
     );
   };
@@ -99,7 +92,7 @@ function BookingsView(): React.ReactElement {
       {showModal && showCreateBookingModal()}
       <Sidebar
         seasonId={seasonId}
-        bookedProductions={bookedProductions}
+        bookings={bookings}
         setBookingId={setBookingId}
         setShowModal={setShowModal}
       />

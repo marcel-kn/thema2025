@@ -93,15 +93,10 @@ function CreateBookingModal({
           />
 
           <label htmlFor="cost_travel">Reisekosten:</label>
-          <input id="cost_travel" name="cost_travel" type="number" required />
+          <input id="cost_travel" name="cost_travel" type="number" />
 
           <label htmlFor="cost_transport">Transportkosten:</label>
-          <input
-            id="cost_transport"
-            name="cost_transport"
-            type="number"
-            required
-          />
+          <input id="cost_transport" name="cost_transport" type="number" />
 
           <div className="button-row">
             <button type="submit">Speichern</button>

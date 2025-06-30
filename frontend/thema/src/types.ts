@@ -1,6 +1,8 @@
 export type Booking = {
+    id: number,
     season: string,
     production: number,
+    production_name: string,
     cost_travel: number,
     cost_transport: number
 }
