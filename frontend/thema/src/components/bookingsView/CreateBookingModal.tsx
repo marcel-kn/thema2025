@@ -5,7 +5,7 @@
  * - setShowModal: Function to turn off visibility of the modal
  * - seasonId: The current selected season
  * - productions: a list of all productions
- * - reloadBookedProds: a function to reload booked productions,
+ * - reloadBookings: a function to reload booked productions,
  *   for triggering reloading
  */
 
@@ -17,14 +17,14 @@ type CreateBookingProps = {
   setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
   seasonId: number;
   productions: Production[];
-  reloadBookedProds: () => void;
+  reloadBookings: () => void;
 };
 
 function CreateBookingModal({
   setShowModal,
   productions,
   seasonId,
-  reloadBookedProds,
+  reloadBookings,
 }: CreateBookingProps): React.ReactElement {
   return (
     <div className="modal-backdrop">
@@ -69,7 +69,7 @@ function CreateBookingModal({
                 cost_transport: Number(costTransport),
               }),
             });
-            reloadBookedProds(); // trigger reload booked productions
+            reloadBookings(); // trigger reload booked productions
             setShowModal(false);
           }}
         >

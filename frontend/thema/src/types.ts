@@ -28,11 +28,22 @@ export type ShowDate = {
 }
 
 export type Ensemble = {
+    id: number,
     name: string,
     contact_person: string,
     email: string,
     phone: string,
     website: string,
+}
+
+export type Artist = {
+    id: number,
+    first_name: string,
+    last_name: string,
+    email: string,
+    phone: string,
+    website: string,
+    ensemble?: number
 }
 
 export type BookingDetails = {

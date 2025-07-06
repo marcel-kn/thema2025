@@ -82,7 +82,7 @@ function BookingsView(): React.ReactElement {
         setShowModal={setShowModal}
         seasonId={seasonId}
         productions={allProductions}
-        reloadBookedProds={reloadBookings}
+        reloadBookings={reloadBookings}
       />
     );
   };

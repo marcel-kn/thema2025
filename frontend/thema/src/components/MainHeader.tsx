@@ -1,7 +1,12 @@
 import themaLogo from "../assets/thema_logo.svg";
 import "./MainHeader.css";
+import { View } from "./Layout";
 
-function MainHeader() {
+type MainHeaderProps = {
+  onMenuClick: (view: View) => void;
+};
+
+function MainHeader({ onMenuClick }: MainHeaderProps) {
   return (
     <header className="mainHeader">
       <div className="headerRow">
@@ -15,10 +20,18 @@ function MainHeader() {
       </div>
 
       <div className="menu">
-        <button className="menuBtn">Bookings</button>
-        <button className="menuBtn">Produktionen</button>
-        <button className="menuBtn">Kalender</button>
-        <button className="menuBtn">Ensembles</button>
+        <button className="menuBtn" onClick={() => onMenuClick("bookings")}>
+          Bookings
+        </button>
+        <button className="menuBtn" onClick={() => onMenuClick("productions")}>
+          Produktionen
+        </button>
+        <button className="menuBtn" onClick={() => onMenuClick("calendar")}>
+          Kalender
+        </button>
+        <button className="menuBtn" onClick={() => onMenuClick("ensembles")}>
+          Ensembles
+        </button>
       </div>
     </header>
   );
